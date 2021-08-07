@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameProjectDemo.Abstract;
 using GameProjectDemo.Abstract.Managers;
 using GameProjectDemo.Entities;
 
@@ -48,15 +49,27 @@ namespace GameProjectDemo
                 CategoryId = 2,
                 Price = 34.55
             };
+            CampaignManager campaignManager = new CampaignManager();
+
+            Campaign campaign1 = campaignManager.AddCampaign(1, "Summer sale", 20);
 
             GameManager gameManager = new GameManager();
-            gameManager.Buy(gamer1, new List<Game> {game1, game2});
-            gameManager.Buy(gamer2,new List<Game> {game1});
+            gameManager.Buy(gamer1, new List<Game> {game1, game2},new List<Campaign>{campaign1});
+            gameManager.Buy(gamer2,new List<Game> {game1},new List<Campaign>());
 
             gamerManager.ShowOwnGames(gamer1);
             gamerManager.ShowOwnGames(gamer2);
             gamerManager.ShowMoney(gamer1);
             gamerManager.ShowMoney(gamer2);
+
+            campaignManager.UpdateCampaignDiscountRate(campaign1, 50);
+            gameManager.Buy(gamer2, new List<Game> {game2}, new List<Campaign> {campaign1});
+
+            gamerManager.ShowOwnGames(gamer1);
+            gamerManager.ShowOwnGames(gamer2);
+            gamerManager.ShowMoney(gamer1);
+            gamerManager.ShowMoney(gamer2);
+
         }
     }
 }

@@ -43,7 +43,7 @@ namespace GameProjectDemo.Abstract.Managers
         {
             foreach (var game in gamer.OwnGames)
             {
-                Console.WriteLine(gamer.FirstName + " owns " + game.Name + " (" + game.Price + "TL)");
+                Console.WriteLine(gamer.FirstName + " owns " + game.Name);
             }
         }
 

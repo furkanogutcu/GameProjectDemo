@@ -9,6 +9,6 @@ namespace GameProjectDemo.Abstract
 {
     interface IGameManagerService
     {
-        void Buy(Gamer gamer, List<Game> games);
+        void Buy(Gamer gamer, List<Game> games, List<Campaign> campaigns);
     }
 }
